@@ -1,7 +1,12 @@
-{{page-title "EmberProject"}}
+<h1> Welcome to October Projects  </h1>
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
 
 {{outlet}}
+
+{{#each @model as |project|}}
+  <h2>{{project.name}}</h2>
+  <img src={{project.image}} alt=""  width="450" height="450"/>
+  <p>Summary: {{project.summary_en}}</p>
+  <p>Status: {{project.status}}</p>
+  <p>Rate: {{project.rate}}</p>
+{{/each}}
