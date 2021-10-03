@@ -4,25 +4,24 @@
 {{outlet}}
 
 
+<div class="container-fluid">
 
 {{#each @model as |project|}}
 
-<div class="card" style="width: auto; ">
-  <img class="card-img-top" src={{project.image}} alt=""  width="450" height="450">
+<div class="card mx-auto w-75 mb-4 rounded-3 shadow-sm" >
+  <img class="card-img-top" src={{project.image}} alt="" width="400" height="400" >
   <div class="card-body">
-
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-        <div class="projectInfo mb-4 rounded-3 shadow-sm">
-            <h1>{{project.name}}</h1>
-            <h4>{{project.summary_en}}</h4>
+        <div>
+          <h5 class="card-title">{{project.name}}</h5>
+          <p class="card-text">{{project.summary_en}}</p>
         </div>
-        <div class="projectDetails mb-4 rounded-3 shadow-sm">
-            <h1>{{project.rate}}%</h1>
+        <div>
+            <h3>{{project.rate}}%</h3>
             <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
             <p>{{project.grade}}</p>
         </div>
-        <div class="projectDuration mb-4 rounded-3 shadow-sm border-primary">
-            <h3>See the project > </h3>
+        <div>
             <p>Duration: {{project.expirationDate}}</p>
         </div>
     </div>
@@ -30,3 +29,5 @@
 </div>
  
 {{/each}}
+
+</div>
