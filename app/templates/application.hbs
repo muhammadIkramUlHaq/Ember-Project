@@ -1,44 +1,32 @@
-<h1> Welcome to October Projects  </h1>
+<h1> Online Projects  </h1>
 
 
 {{outlet}}
 
 
+
 {{#each @model as |project|}}
 
-<div class="row row-cols-1 row-cols-md-1 mb-1 text-center">
-  <img src={{project.image}} alt=""  width="450" height="450"/>
-</div>
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-      <div class="col">
+<div class="card" style="width: auto; ">
+  <img class="card-img-top" src={{project.image}} alt=""  width="450" height="450">
+  <div class="card-body">
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
         <div class="projectInfo mb-4 rounded-3 shadow-sm">
-          <div class="projectInfo-body">
-            <h1 class="projectTitle">{{project.name}}</h1>
-            <h4 class="projectSummary">{{project.summary_en}}</h4>
-          </div>
+            <h1>{{project.name}}</h1>
+            <h4>{{project.summary_en}}</h4>
         </div>
-      </div>
-      <div class="col">
         <div class="projectDetails mb-4 rounded-3 shadow-sm">
-          <div class="projectDetails-body">
-            <h1 class="projectInterestRate"><p>{{project.rate}}%</p></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
-              <p>{{project.grade}}</p>
-            </ul>
-          </div>
+            <h1>{{project.rate}}%</h1>
+            <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
+            <p>{{project.grade}}</p>
         </div>
-      </div>
-      <div class="col">
         <div class="projectDuration mb-4 rounded-3 shadow-sm border-primary">
-          <div class="projectDuration-body">
-            <h3 class="projectOverview">See the project > </h3>
-            <ul class="list-unstyled mt-3 mb-4">
-              <p>Duration: {{project.expirationDate}}</p>
-            </ul>
-          </div>
+            <h3>See the project > </h3>
+            <p>Duration: {{project.expirationDate}}</p>
         </div>
-      </div>
     </div>
+  </div>
+</div>
  
 {{/each}}
