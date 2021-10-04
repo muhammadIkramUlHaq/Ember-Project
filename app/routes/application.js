@@ -27,7 +27,10 @@ export default Ember.Route.extend({
         grade,
         onlineDate,
         loanDuration,
+        business,
       } = project;
+
+      const country = business.address.country;
 
       let summary_en = summary.en[0].value;
 
@@ -46,6 +49,7 @@ export default Ember.Route.extend({
         amount,
         projectStartedDuration,
         loanDuration,
+        country,
       };
     });
 

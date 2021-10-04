@@ -12,11 +12,38 @@
                       <h5 class="card-title">{{project.name}}</h5>
                       <p class="card-text">{{project.summary_en}}</p>
                     </div>
-                    <div class="col-4 text-center">
-                       <img class="card-img-top" src={{project.image}} alt="" width="5" height="5" >
+                    <div class="col-4 text-center"> 
+                       <img src="{{rootURL}}/flags/icon-flag-{{project.country}}.svg" alt="" >
                         <h3>{{project.rate}}%</h3>
                         <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
-                        <p><i class="fa fa-success fa-circle"></i>{{project.grade}}</p>
+                        {{#if (eq project.grade "A+")}} 
+                         <p> <FaIcon class="text-success" @icon="circle-notch" /> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "A")}} 
+                         <p> <FaIcon class="text-success" @icon="circle"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "A-")}} 
+                         <p> <FaIcon class="text-success" @icon="circle" @prefix="far"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "B+")}} 
+                         <p> <FaIcon class="text-warning" @icon="circle-notch" /> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "B")}} 
+                         <p> <FaIcon class="text-warning" @icon="circle"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "B-")}} 
+                         <p> <FaIcon class="text-warning" @icon="circle" @prefix="far"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "C+")}} 
+                         <p> <FaIcon class="text-danger" @icon="circle-notch"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "C")}} 
+                         <p> <FaIcon class="text-danger" @icon="circle" /> {{project.grade}}</p>
+                        {{/if}}
+                         {{#if (eq project.grade "C-")}} 
+                         <p> <FaIcon class="text-danger" @icon="circle" @prefix="far"/> {{project.grade}}</p>
+                        {{/if}}
+                      
                     </div>
                     <div class="col-4 text-right"> 
                         <p>{{project.projectStartedDuration}} ago</p>
@@ -45,9 +72,36 @@
                       <p class="card-text">{{project.summary_en}}</p>
                     </div>
                     <div class="col-4 text-center">
+                        <img src="{{rootURL}}/flags/icon-flag-{{project.country}}.svg" alt="" >
                         <h3>{{project.rate}}%</h3>
                         <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
-                        <p><i class="fa fa-circle"></i>{{project.grade}}</p>
+                            {{#if (eq project.grade "A+")}} 
+                         <p> <FaIcon class="text-success" @icon="circle-notch"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "A")}} 
+                         <p> <FaIcon class="text-success" @icon="circle"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "A-")}} 
+                         <p> <FaIcon class="text-success" @icon="circle" @prefix="far"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "B+")}} 
+                         <p> <FaIcon class="text-warning" @icon="circle-notch"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "B")}} 
+                         <p> <FaIcon class="text-warning" @icon="circle"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "B-")}} 
+                         <p> <FaIcon class="text-warning" @icon="circle" @prefix="far"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "C+")}} 
+                         <p> <FaIcon class="text-danger" @icon="circle-notch"/> {{project.grade}}</p>
+                        {{/if}}
+                        {{#if (eq project.grade "C")}} 
+                         <p> <FaIcon class="text-danger" @icon="circle" /> {{project.grade}}</p>
+                        {{/if}}
+                         {{#if (eq project.grade "C-")}} 
+                         <p> <FaIcon class="text-danger" @icon="circle" @prefix="far"/> {{project.grade}}</p>
+                        {{/if}}
                     </div>
                     <div class="col-4 text-right"> 
                         <p>{{project.projectStartedDuration}} ago</p>
