@@ -1,118 +1,22 @@
 <div class="container-fluid">
-  <h3 class="text-center mb-1"> {{@model.onlineProjectCount}} projects online  </h3>
-  {{#each @model.parsedProjects as |project|}}
+    <h3 class="text-center mb-2"> {{@model.onlineProjectCount}} projects online  </h3>
+    {{#each @model.parsedProjects as |project|}}
       {{#if (eq project.status "online")}} 
       <div class="row">
         <div class="col-12">
-            <div class="card mx-auto w-75 mb-4 rounded-3 shadow-sm" >
-              <img class="card-img-top" src={{project.image}} alt="" width="400" height="400" >
-              <div class="card-body">
-                  <div class="row">
-                    <div class="col-4">
-                      <h5 class="card-title">{{project.name}}</h5>
-                      <p class="card-text">{{project.summary_en}}</p>
-                    </div>
-                    <div class="col-4 text-center"> 
-                       <img src="{{rootURL}}/flags/icon-flag-{{project.country}}.svg" alt="" >
-                        <h3>{{project.rate}}%</h3>
-                        <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
-                        {{#if (eq project.grade "A+")}} 
-                         <p> <FaIcon class="text-success" @icon="circle-notch" /> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "A")}} 
-                         <p> <FaIcon class="text-success" @icon="circle"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "A-")}} 
-                         <p> <FaIcon class="text-success" @icon="circle" @prefix="far"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "B+")}} 
-                         <p> <FaIcon class="text-warning" @icon="circle-notch" /> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "B")}} 
-                         <p> <FaIcon class="text-warning" @icon="circle"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "B-")}} 
-                         <p> <FaIcon class="text-warning" @icon="circle" @prefix="far"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "C+")}} 
-                         <p> <FaIcon class="text-danger" @icon="circle-notch"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "C")}} 
-                         <p> <FaIcon class="text-danger" @icon="circle" /> {{project.grade}}</p>
-                        {{/if}}
-                         {{#if (eq project.grade "C-")}} 
-                         <p> <FaIcon class="text-danger" @icon="circle" @prefix="far"/> {{project.grade}}</p>
-                        {{/if}}
-                      
-                    </div>
-                    <div class="col-4 text-right"> 
-                        <p>{{project.projectStartedDuration}} ago</p>
-                    </div>
-                </div>
-              </div>
-            </div>
+          <ProjectCard @project={{project}}></ProjectCard>          
         </div>
       </div>
       {{/if}}
     {{/each}}
-</div>
-
-  <h3 class="text-center mb-3"> Financed Projects  </h3>
-      <div class="row">
-      {{#each @model.parsedProjects as |project|}}
-        {{#if (not-eq project.status "online")}} 
-        <div class="col-6">
-       
-            <div class="card mb-4  w-75 mx-auto rounded-3 shadow-sm" >
-              <img class="card-img-top" src={{project.image}} alt="" width="400" height="400" >
-              <div class="card-body">
-                  <div class="row">
-                    <div class="col-4">
-                      <h5 class="card-title">{{project.name}}</h5>
-                      <p class="card-text">{{project.summary_en}}</p>
-                    </div>
-                    <div class="col-4 text-center">
-                        <img src="{{rootURL}}/flags/icon-flag-{{project.country}}.svg" alt="" >
-                        <h3>{{project.rate}}%</h3>
-                        <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
-                            {{#if (eq project.grade "A+")}} 
-                         <p> <FaIcon class="text-success" @icon="circle-notch"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "A")}} 
-                         <p> <FaIcon class="text-success" @icon="circle"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "A-")}} 
-                         <p> <FaIcon class="text-success" @icon="circle" @prefix="far"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "B+")}} 
-                         <p> <FaIcon class="text-warning" @icon="circle-notch"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "B")}} 
-                         <p> <FaIcon class="text-warning" @icon="circle"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "B-")}} 
-                         <p> <FaIcon class="text-warning" @icon="circle" @prefix="far"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "C+")}} 
-                         <p> <FaIcon class="text-danger" @icon="circle-notch"/> {{project.grade}}</p>
-                        {{/if}}
-                        {{#if (eq project.grade "C")}} 
-                         <p> <FaIcon class="text-danger" @icon="circle" /> {{project.grade}}</p>
-                        {{/if}}
-                         {{#if (eq project.grade "C-")}} 
-                         <p> <FaIcon class="text-danger" @icon="circle" @prefix="far"/> {{project.grade}}</p>
-                        {{/if}}
-                    </div>
-                    <div class="col-4 text-right"> 
-                        <p>{{project.projectStartedDuration}} ago</p>
-                    </div>
-                </div>
-              </div>
-    
-            </div>
-        </div>
-        {{/if}}
-      {{/each}}
-  
-
+    <h3 class="text-center mb-3"> Financed Projects  </h3>
+    <div class="row">
+        {{#each @model.parsedProjects as |project|}}
+          {{#if (not-eq project.status "online")}} 
+          <div class="col-6">
+            <ProjectCard @project={{project}}></ProjectCard>     
+          </div>
+          {{/if}}
+        {{/each}}   
+    </div>
 </div>
