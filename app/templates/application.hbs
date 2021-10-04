@@ -1,33 +1,64 @@
-<h1> Online Projects  </h1>
-
-
-{{outlet}}
-
-
 <div class="container-fluid">
-
-{{#each @model as |project|}}
-
-<div class="card mx-auto w-75 mb-4 rounded-3 shadow-sm" >
-  <img class="card-img-top" src={{project.image}} alt="" width="400" height="400" >
-  <div class="card-body">
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-        <div>
-          <h5 class="card-title">{{project.name}}</h5>
-          <p class="card-text">{{project.summary_en}}</p>
+  <h3 class="text-center mb-1"> {{@model.onlineProjectCount}} projects online  </h3>
+  {{#each @model.parsedProjects as |project|}}
+      {{#if (eq project.status "online")}} 
+      <div class="row">
+        <div class="col-12">
+            <div class="card mx-auto w-75 mb-4 rounded-3 shadow-sm" >
+              <img class="card-img-top" src={{project.image}} alt="" width="400" height="400" >
+              <div class="card-body">
+                  <div class="row">
+                    <div class="col-4">
+                      <h5 class="card-title">{{project.name}}</h5>
+                      <p class="card-text">{{project.summary_en}}</p>
+                    </div>
+                    <div class="col-4 text-center">
+                       <img class="card-img-top" src={{project.image}} alt="" width="5" height="5" >
+                        <h3>{{project.rate}}%</h3>
+                        <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
+                        <p><i class="fa fa-circle"></i>{{project.grade}}</p>
+                    </div>
+                    <div class="col-4 text-right"> 
+                        <p>{{project.projectStartedDuration}} ago</p>
+                    </div>
+                </div>
+              </div>
+            </div>
         </div>
-        <div>
-            <h3>{{project.rate}}%</h3>
-            <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
-            <p>{{project.grade}}</p>
-        </div>
-        <div>
-            <p>Duration: {{project.expirationDate}}</p>
-        </div>
-    </div>
-  </div>
+      </div>
+      {{/if}}
+    {{/each}}
 </div>
- 
-{{/each}}
+
+  <h3 class="text-center mb-3"> Financed Projects  </h3>
+      <div class="row">
+      {{#each @model.parsedProjects as |project|}}
+        {{#if (not-eq project.status "online")}} 
+        <div class="col-6">
+       
+            <div class="card mb-4  w-75 mx-auto rounded-3 shadow-sm" >
+              <img class="card-img-top" src={{project.image}} alt="" width="400" height="400" >
+              <div class="card-body">
+                  <div class="row">
+                    <div class="col-4">
+                      <h5 class="card-title">{{project.name}}</h5>
+                      <p class="card-text">{{project.summary_en}}</p>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h3>{{project.rate}}%</h3>
+                        <p> {{ project.loanDuration }} months .  €{{project.amount}}</p>
+                        <p><i class="fa fa-circle"></i>{{project.grade}}</p>
+                    </div>
+                    <div class="col-4 text-right"> 
+                        <p>{{project.projectStartedDuration}} ago</p>
+                    </div>
+                </div>
+              </div>
+    
+            </div>
+        </div>
+        {{/if}}
+      {{/each}}
+  
 
 </div>
